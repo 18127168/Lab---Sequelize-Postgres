@@ -38,6 +38,15 @@ app.get('/sync',function(req,res){
   })
 })
 
+app.get('/t',(req, res) => {
+	let blogController = require('./controllers/blogController');
+	blogController.getAll().then(data => {
+    console.log(data);
+		res.locals.data = data;
+		res.render('task3');
+	});
+});
+
 
 app.get('/featured/',function(req,res){
   res.locals.foot_name = "18127176 - To Dong Phat";
