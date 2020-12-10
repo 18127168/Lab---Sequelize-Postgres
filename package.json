@@ -1,0 +1,24 @@
+{
+  "name": "lab---sequelize-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/index.js",
+  "scripts": {
+    "start": "node public/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/18127168/Lab---Sequelize-Postgres.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/18127168/Lab---Sequelize-Postgres/issues"
+  },
+  "homepage": "https://github.com/18127168/Lab---Sequelize-Postgres#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0"
+  }
+}
