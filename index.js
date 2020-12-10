@@ -32,7 +32,7 @@ app.get('/recipes',function(req,res){
 })
 
 
-app.get('/featured/:id',function(req,res){
+app.get('/featured/',function(req,res){
   res.locals.foot_name = "18127176 - To Dong Phat";
 
   res.render('recipes');
