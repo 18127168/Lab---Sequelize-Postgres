@@ -25,18 +25,14 @@ app.get('/',function(req,res){
     res.render('index');
 })
 
-app.get('/recipes',function(req,res){
-    res.locals.foot_name = "18127153 - Phan Nhat Minh";
-  
-    res.render('recipes');
-})
+app.use('/recipes', require('./routers/recipes'))
 
-var models = require('./models');
-app.get('/sync',function(req,res){
-  models.sequelize.sync().then(function(){
-      res.send('database sync complete!');
-  })
-})
+// var models = require('./models');
+// app.get('/sync',function(req,res){
+//   models.sequelize.sync().then(function(){
+//       res.send('database sync complete!');
+//   })
+// })
 
 
 app.get('/featured/',function(req,res){
