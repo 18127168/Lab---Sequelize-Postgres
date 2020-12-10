@@ -26,7 +26,7 @@ app.get('/',function(req,res){
 })
 
 app.use('/recipes', require('./routers/recipes'));
-app.use('/search/:id', require('./routers/search'));
+app.use('/search', require('./routers/search'));
 
 var models = require('./models');
 app.get('/sync',function(req,res){

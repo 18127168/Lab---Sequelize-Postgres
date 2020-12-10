@@ -19,28 +19,31 @@ controller.getIngredient = function (callback) {
 	});
 };
 
-// controller.search = function(query, callback){
-// 	Product.findAll({
-// 		where: {
-// 			$or: [
-// 				{
-// 					title: {
-// 						$like: `%${query}%`
-// 					}
-// 				},
-// 				{
-// 					summary: {
-// 						$like: `%${query}%`
-// 					}
-// 				},
-// 				{
-// 					description: {
-// 						$like: `%${query}%` 
-// 					}
-// 				},
-// 			]
-// 		}
-// 	}).then(funcion( ))
-// };
+controller.search = function(query, callback){
+	Recipes.findAll({
+		where: {
+			$or: [
+				{
+					title: {
+						$like: `%${query}%`
+					}
+				},
+				{
+					summary: {
+						$like: `%${query}%`
+					}
+				},
+				{
+					description: {
+						$like: `%${query}%` 
+					}
+				},
+			]
+		},
+	}).then(function(search_recipes) {
+		callback(search_recipes);
+	});
+
+};
 
 module.exports = controller;

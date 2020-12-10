@@ -58,7 +58,8 @@
 							</div>
 						</li>						`
 
-                            } else {
+                        } 
+                        else {
                                 var items = `<li>
 							<a href="featured/{{id}}"><img src="{{smallImagePath}}" alt="Image"></a>
 							<div>
@@ -81,14 +82,11 @@
 							</div>
 						</li>`
                                 console.log(items)
-                            }
+                        }
 
 
-                            t.insertAdjacentHTML("beforeend", items)
+                        t.insertAdjacentHTML("beforeend", items)
                         </script>
-
-
-                        {{!-- 2 --}}
 
                         {{/each}}
                     </ul>
