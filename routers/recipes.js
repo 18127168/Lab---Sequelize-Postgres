@@ -7,9 +7,10 @@ router.get('/', (req, res) => {
     res.locals.foot_name = "18127153 - Phan Nhat Minh";
 
     controller.getRecipes(function(recipes) {
-        console.log(recipes);
+        res.locals.recipes = recipes;
+        res.render('recipes');
     });
-    res.render('recipes');
+    
 })
 
 module.exports = router;
