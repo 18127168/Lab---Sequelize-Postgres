@@ -25,38 +25,21 @@ app.get('/',function(req,res){
     res.render('index');
 })
 
-app.use('/recipes', require('./routers/recipes'))
+app.use('/recipes', require('./routers/recipes'));
+app.use('/search/:id', require('./routers/search'));
 
-// var models = require('./models');
-// app.get('/sync',function(req,res){
-//   models.sequelize.sync().then(function(){
-//       res.send('database sync complete!');
-//   })
-// })
+var models = require('./models');
+app.get('/sync',function(req,res){
+  models.sequelize.sync().then(function(){
+      res.send('database sync complete!');
+  })
+})
 
-app.get('/t',(req, res) => {
-	let blogController = require('./controllers/blogController');
-	blogController.getAll().then(data => {
-    console.log(data);
-		res.locals.data = data;
-		res.render('task3');
-	});
-});
-
-
-app.get('/featured/',function(req,res){
+app.get('/featured',function(req,res){
   res.locals.foot_name = "18127176 - To Dong Phat";
 
   res.render('recipes');
 })
-
-app.get('/search/:id',function(req,res){
-  res.locals.foot_name = "18127168 - Tran Bui Tai Nhan";
-
-  res.render('search');
-})
-
-
 
 app.listen(app.get('port'),function(){
   console.log("Server is listening on port "+ app.get('port'));

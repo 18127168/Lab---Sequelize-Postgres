@@ -3,13 +3,12 @@ var router = express.Router();
 
 
 var controller = require('../controllers/blogController');
-router.get('/', (req, res) => {
-    res.locals.foot_name = "18127153 - Phan Nhat Minh";
-
-    controller.getRecipes(function(recipes) {
+router.get('/:id', (req, res) => {
+    
+    controller.getAll(function(recipes) {
         console.log(recipes);
     });
-    res.render('recipes');
+    res.render('search');
 })
 
 module.exports = router;
