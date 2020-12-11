@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 
     controller.getRecipes(function(recipes) {
         controller.getIngredient(function(ingredients) {
-            console.log(recipes);
-            res.render('recipes',{recipes :recipes, ingredients: ingredients});
+            res.send(recipes);
+            //res.render('recipes',{recipes :recipes, ingredients: ingredients});
         });
     });
 
