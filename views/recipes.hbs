@@ -26,67 +26,46 @@
             <div id="content">
                 <div>
                     <ul>
-                        <script>
-                            var t = document.querySelector('#content ul');
-                        </script>
-
                         {{#each recipes}}
-                        <script>
-                            var tmp = "{{id}}"
-                            var index = parseInt(tmp);
-                            var ingredient_array = []
-                        </script>
-                        {{#each ../ingredients}}
-                        <script>
-                            var tmp = "{{RecipeId}}"
-                            var ingre_index = parseInt(tmp);
-                            if (ingre_index == index) {
-                                ingredient_array.push("{{title}}")
-                            }
-                        </script>
-                        {{/each}}
-                        <script>
-                            console.log(index);
-                            if (index % 2 != 0) {
-                                var items = ` <li>
-							<a href="featured/{{id}}"><img src="{{smallImagePath}}" alt="Image"></a>
-							<div>
-								<h3><a href="featured/{{id}}">{{title}}</a></h3>
-								<p>
-									{{summary}}
-								</p>
-							</div>
-						</li>`
-
-                        } 
-                        else {
-                                var items = `<li>
-							<a href="featured/{{id}}"><img src="{{smallImagePath}}" alt="Image"></a>
-							<div>
-								<h3><a href="featured/{{id}}">{{title}}</a></h3>
-								<div>
-									<p>
-										{{summary}}
-									</p><ul>
-									`;
-
-                                ingredient_array.forEach(ele => {
-                                    items += `			<li>
-											${ele}
-										</li>`
-
-                                })
-
-                                items += `</ul>			
-								</div>
-							</div>
-						</li>`
-                                console.log(items)
-                        }
-
-                        t.insertAdjacentHTML("beforeend", items)
-                        </script>
-
+                        <li>
+                            <a href="featured/{{id}}"><img src="{{smallImagePath}}" alt="Image"></a>
+                            <div id="index{{id}}">
+                                <h3><a href="featured/{{id}}">{{title}}</a></h3>
+                                <script>
+                                    
+                                    var tmp = "{{id}}";
+                                    var index = parseInt(tmp);
+                                    var ingredient_array = [];
+                                    var item = ``;
+                                    if (index%2 === 0) {
+                                        item += `<div><p>{{summary}}</p><ul>`;
+                                    }
+                                    else {
+                                        item += `<p>{{summary}}</p>`;
+                                    }
+                                </script>
+                                {{#each ../ingredients}}
+                                    <script>
+                                        var tmp = "{{RecipeId}}"
+                                        var ingre_index = parseInt(tmp);
+                                        if (ingre_index == index) {
+                                            ingredient_array.push("{{title}}")
+                                        }
+                                    </script>
+                                {{/each}}
+                                <script>
+                                    if (index%2 === 0) {
+                                         ingredient_array.forEach(ele => {
+                                            item += `<li> ${ele}</li>`;
+                                        })
+                                        item += `</ul></div>`;
+                                    }
+        
+                                    var t = document.querySelector('#index{{id}}');
+                                    t.insertAdjacentHTML("beforeend", item);
+                                </script>
+                            </div>
+                        </li>
                         {{/each}}
                     </ul>
                 </div>
