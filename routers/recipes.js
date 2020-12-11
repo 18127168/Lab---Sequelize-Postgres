@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     controller.getRecipes(function(recipes) {
         controller.getIngredient(function(ingredients) {
             recipes = recipes.slice(0, 5);
-                        ingredients = ingredients.slice(0,20);
+            ingredients = ingredients.slice(0,20);
 
             for (let i = 0; i < 5; i++){
                 ingredients[i*4].id = i + 1;
