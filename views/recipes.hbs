@@ -26,13 +26,16 @@
             <div id="content">
                 <div>
                     <ul>
+                                            <script>
+                            console.log({{recipes}});
+                        </script>
                         {{#each recipes}}
                         <li>
                             <a href="featured/{{id}}"><img src="{{smallImagePath}}" alt="Image"></a>
                             <div id="index{{id}}">
                                 <h3><a href="featured/{{id}}">{{title}}</a></h3>
                                 <script>
-                                    console.log({{../recipes}}.length);
+                                    
                                     var tmp = "{{id}}";
                                     var index = parseInt(tmp);
                                     var ingredient_array = [];
