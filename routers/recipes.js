@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
 
     controller.getRecipes(function(recipes) {
         controller.getIngredient(function(ingredients) {
-            res.send(recipes);
-            //res.render('recipes',{recipes :recipes, ingredients: ingredients});
+            res.render('recipes',{recipes :recipes, ingredients: ingredients});
         });
     });
 
