@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     controller.getRecipes(function(recipes) {
         controller.getIngredient(function(ingredients) {
             recipes = recipes.slice(0, 5);
-            ingredients = ingredients.slice(0,5);
+            ingredients = ingredients.slice(0, 20);
             res.render('recipes',{recipes :recipes, ingredients: ingredients});
         });
     });
