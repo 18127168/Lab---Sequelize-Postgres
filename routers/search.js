@@ -8,7 +8,12 @@ router.get('/', (req, res) => {
     var query = req.query.query;
     controller.search(query, function(search_recipes) {
         controller.getIngredient(function(ingredients) {
-            res.render('recipes',{search_recipes :search_recipes, ingredients: ingredients});
+            console.log(search_recipes);
+            for (let i = 0; i < search_recipes.length; i++){
+                search_recipes[i].id = i + 1;
+            }
+            console.log(search_recipes);
+            res.render('recipes',{recipes :search_recipes, ingredients: ingredients});
         });
     });
 })

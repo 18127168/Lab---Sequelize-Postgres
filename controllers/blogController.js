@@ -4,14 +4,6 @@ var models = require('../models');
 var Recipes = models.Recipe;
 var Ingredients = models.Ingredient;
 
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
-const operatorsAliases = {
-  $like: Op.like,
-  $not: Op.not
-}
-
-
 controller.getRecipes = function (callback) {
 	
 	Recipes.findAll().then(function(recipes) {
@@ -26,27 +18,29 @@ controller.getIngredient = function (callback) {
 	});
 };
 
+const sequelize = require('sequelize');
 controller.search = function(query, callback){
 	Recipes.findAll({
 		where: {
-			$or: [
+			[sequelize.Op.or]: [
 				{
 					title: {
-						[Op.like]: `%${query}%`
+						[sequelize.Op.iLike]: '%' + query + '%'
 					}
 				},
 				{
 					summary: {
-						[Op.like]: `%${query}%`
+						[sequelize.Op.iLike]: '%' + query + '%'
 					}
 				},
 				{
 					description: {
-						[Op.like]: `%${query}%` 
+						[sequelize.Op.iLike]: '%' + query + '%'
 					}
 				},
 			]
 		},
+		raw: true
 		
 	}).then(function(search_recipes) {
 		callback(search_recipes);
