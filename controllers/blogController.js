@@ -7,7 +7,6 @@ var Ingredients = models.Ingredient;
 controller.getRecipes = function (callback) {
 	
 	Recipes.findAll().then(function(recipes) {
-		console.log(recipes);
 		callback(recipes);
 	});
 };
