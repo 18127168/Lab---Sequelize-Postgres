@@ -12,10 +12,10 @@ router.get('/', (req, res) => {
             ingredients = ingredients.slice(0,20);
 
             for (let i = 0; i < 5; i++){
-                ingredients[i*4].id = i + 1;
-                ingredients[i*4 + 1].id = i + 1;
-                ingredients[i*4 + 2].id = i + 1;
-                ingredients[i*4 + 3].id = i + 1;
+                ingredients[i*4].RecipeId = i + 1;
+                ingredients[i*4 + 1].RecipeId = i + 1;
+                ingredients[i*4 + 2].RecipeId = i + 1;
+                ingredients[i*4 + 3].RecipeId = i + 1;
             }
             
             res.render('recipes',{recipes :recipes, ingredients: ingredients});
